@@ -11,20 +11,20 @@
 ### Team Name: [Name]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: ALAKANANDHA VINOD,SNGCE
+- Member 2: ADHYA KRISHNA PV,SNGCE
 
 ### Hosted Project Link
-[mention your project hosted link here]
-
+https://vercel.com/aryacvs-projects/shesafe
 ### Project Description
-[2-3 lines about what your project does]
+She Safe is a women-centered safety and empowerment initiative designed to enhance personal security, awareness, and rapid response support for women and girls. The project aims to leverage technology, community engagement, and education to create safer environments both online and offline.
 
 ### The Problem statement
-[What problem are you solving?]
-
+Women and girls continue to face safety risks such as harassment, assault, and stalking in public and private spaces. Many lack immediate access to reliable emergency support and real-time safety resources during critical situations. There is a strong need for an accessible, technology-driven solution that enhances personal safety and enables faster response in emergencies.
 ### The Solution
-[How are you solving it?]
+**Solution – She Safe**
+
+She Safe is a technology-driven safety platform that provides women with instant access to emergency assistance through a one-touch SOS alert system with real-time location sharing. The platform integrates safe zone mapping, community reporting, and verified support resources to ensure quick response and informed decision-making during emergencies. By combining technology, awareness, and community support, She Safe empowers women to feel safer, more confident, and better protected in their daily lives.
 
 ---
 
@@ -81,18 +81,6 @@ List the key features of your project:
 
 ## Project Documentation
 
-### For Software:
-
-#### Screenshots (Add at least 3)
-
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
 
 #### Diagrams
 
@@ -402,9 +390,9 @@ If you used AI tools during development, document them here for transparency:
 
 ## Team Contributions
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
-- [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
+ALAKANANDHA VINOD: DESIGNED WEBSITE
+ADHYA KRISHNA PV:DEVELOPED WEBSITE
+
 
 ---
 
