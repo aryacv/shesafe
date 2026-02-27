@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SheSafe App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fce4ec;
+            margin: 0;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            padding-top: 100px;
+        }
+
+        h1 {
+            color: #d81b60;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ad1457;
+        }
+
+        .sos-btn {
+            background-color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- SPLASH PAGE -->
+<div id="splash" class="page">
+    <h1>🛡 SheSafe</h1>
+    <p>Your Safety Companion</p>
+</div>
+
+<!-- LOGIN PAGE -->
+<div id="login" class="page">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? 
+        <a href="#register">Register</a>
+    </p>
+</div>
+
+<!-- REGISTER PAGE -->
+<div id="register" class="page">
+    <h2>Register</h2>
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <p>Already have an account? 
+        <a href="#login">Login</a>
+    </p>
+</div>
+
+<!-- HOME PAGE -->
+<div id="home" class="page">
+    <h1>Welcome to SheSafe</h1>
+
+    <button class="sos-btn" onclick="sendSOS()">🚨 SOS</button>
+
+    <button onclick="getLocation()">📍 Live Location</button>
+    <p id="location"></p>
+
+    <h3>Safety Timer</h3>
+    <input type="number" id="minutes" placeholder="Enter minutes">
+    <button onclick="startTimer()">Start Timer</button>
+    <p id="countdown"></p>
+
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+    // ROUTING FUNCTION
+    function showPage(pageId) {
+        document.querySelectorAll(".page").forEach(page => {
+            page.style.display = "none";
+        });
+
+        document.getElementById(pageId).style.display = "block";
+    }
+
+    // Detect URL hash
+    function checkHash() {
+        let hash = window.location.hash.substring(1);
+
+        if (!hash) {
+            showPage("splash");
+            setTimeout(() => {
+                window.location.hash = "login";
+            }, 3000);
+        } else {
+            showPage(hash);
+        }
+    }
+
+    window.addEventListener("hashchange", checkHash);
+    window.addEventListener("load", checkHash);
+
+    // REGISTER
+    function register() {
+        let user = document.getElementById("regUser").value;
+        let pass = document.getElementById("regPass").value;
+
+        if (user && pass) {
+            localStorage.setItem("username", user);
+            localStorage.setItem("password", pass);
+            alert("Registered Successfully!");
+            window.location.hash = "login";
+        } else {
+            alert("Please fill all fields");
+        }
+    }
+
+    // LOGIN
+    function login() {
+        let user = document.getElementById("loginUser").value;
+        let pass = document.getElementById("loginPass").value;
+
+        let storedUser = localStorage.getItem("username");
+        let storedPass = localStorage.getItem("password");
+
+        if (user === storedUser && pass === storedPass) {
+            window.location.hash = "home";
+        } else {
+            alert("Invalid Credentials");
+        }
+    }
+
+    // LOGOUT
+    function logout() {
+        window.location.hash = "login";
+    }
+
+    // SOS
+    function sendSOS() {
+        alert("🚨 SOS Alert Sent!");
+    }
+
+    // LOCATION
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById("location").innerHTML =
+                    "Latitude: " + position.coords.latitude +
+                    "<br>Longitude: " + position.coords.longitude;
+            });
+        } else {
+            alert("Geolocation not supported");
+        }
+    }
+
+    // TIMER
+    function startTimer() {
+        let minutes = document.getElementById("minutes").value;
+        let time = minutes * 60;
+        let countdown = document.getElementById("countdown");
+
+        let interval = setInterval(function() {
+            let min = Math.floor(time / 60);
+            let sec = time % 60;
+
+            countdown.innerHTML = min + ":" + (sec < 10 ? "0" + sec : sec);
+
+            time--;
+
+            if (time < 0) {
+                clearInterval(interval);
+                alert("⏰ Timer Ended! Sending SOS!");
+                sendSOS();
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
